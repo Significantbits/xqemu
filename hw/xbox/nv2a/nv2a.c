@@ -375,6 +375,7 @@ static void nv2a_get_offsets(VGACommonState *s,
 
 static void nv2a_vga_gfx_update(void *opaque)
 {
+    printf("VGA GFX UPDATE!\n");
     VGACommonState *vga = opaque;
     vga->hw_ops->gfx_update(vga);
 

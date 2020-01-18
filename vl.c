@@ -4595,13 +4595,16 @@ int main(int argc, char **argv, char **envp)
             exit(1);
         }
     } else if (autostart) {
+        printf("VM START!\n");
         vm_start();
     }
 
     accel_setup_post(current_machine);
     os_setup_post();
 
+    printf("BEFORE MAIN LOOP!\n");
     main_loop();
+    printf("AFTER MAIN LOOP!\n");
 
     gdbserver_cleanup();
 
@@ -4627,6 +4630,8 @@ int main(int argc, char **argv, char **envp)
     qemu_chr_cleanup();
     user_creatable_cleanup();
     /* TODO: unref root container, check all devices are ok */
+
+    printf("RETURNING FROM MAIN!\n");
 
     return 0;
 }
